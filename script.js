@@ -1,12 +1,12 @@
 const crushName = "Kamu";
 const greetingText =
-  "Di hari yang penuh berkah ini, aku cuma mau bilang: Selamat Hari Raya Idul Adha. Semoga kamu selalu bahagia, sehat, dan dikelilingi hal-hal baik. Kalau boleh jujur, dari semua yang indah hari ini, senyummu tetap yang paling aku tunggu.";
+  "Di hari yang penuh berkah ini, Ada banyak kambing dan sapi yang deg-degan tapi tenang, mereka tidak sendiri, Soalnya aku juga lagi deg-degan sekarang😭. Aku cuma mau bilang: Selamat Hari Raya Idul Adha. Semoga kamu selalu bahagia, sehat selalu, dan dikelilingi hal-hal baik. Kalau boleh jujur, dari semua yang ditunggu hari ini selain daging kurban yaitu bisa chattan sama kamu.";
 
 const blessingMessages = [
   "Wah, kamu jago juga!",
   "Sapi ini larinya demi senyummu.",
   "Berkahnya nambah, deg-degannya juga.",
-  "Kalau kamu senyum, skornya auto naik."
+  "Kalau kamu senyum, skornya auto naik.",
 ];
 
 document.querySelectorAll("[data-crush-name]").forEach((node) => {
@@ -17,7 +17,7 @@ const audio = {
   enabled: true,
   ctx: null,
   musicTimer: null,
-  musicStep: 0
+  musicStep: 0,
 };
 
 function ensureAudio() {
@@ -36,7 +36,13 @@ function ensureAudio() {
   return audio.ctx;
 }
 
-function tone(frequency, duration = 0.12, type = "sine", volume = 0.06, delay = 0) {
+function tone(
+  frequency,
+  duration = 0.12,
+  type = "sine",
+  volume = 0.06,
+  delay = 0,
+) {
   const ctx = ensureAudio();
   if (!ctx) return;
   const start = ctx.currentTime + delay;
@@ -106,7 +112,8 @@ function startBackgroundMusic() {
     if (!audio.enabled) return;
     const note = notes[audio.musicStep % notes.length];
     tone(note, 0.14, "sine", 0.018);
-    if (audio.musicStep % 2 === 0) tone(note / 2, 0.18, "triangle", 0.012, 0.02);
+    if (audio.musicStep % 2 === 0)
+      tone(note / 2, 0.18, "triangle", 0.012, 0.02);
     audio.musicStep += 1;
   }, 720);
 }
@@ -145,7 +152,7 @@ document.addEventListener(
   () => {
     ensureAudio();
   },
-  { once: true }
+  { once: true },
 );
 
 const navLinks = [...document.querySelectorAll(".nav-links a")];
@@ -156,11 +163,14 @@ const sectionObserver = new IntersectionObserver(
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
       navLinks.forEach((link) => {
-        link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`);
+        link.classList.toggle(
+          "active",
+          link.getAttribute("href") === `#${entry.target.id}`,
+        );
       });
     });
   },
-  { threshold: 0.45 }
+  { threshold: 0.45 },
 );
 
 sections.forEach((section) => sectionObserver.observe(section));
@@ -225,7 +235,9 @@ openGreeting.addEventListener("click", () => {
   fireConfetti();
   revealGreeting();
   showToast("Ucapan spesial dibuka pelan-pelan.");
-  document.getElementById("ucapan").scrollIntoView({ behavior: "smooth", block: "start" });
+  document
+    .getElementById("ucapan")
+    .scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 const cardObserver = new IntersectionObserver(
@@ -236,7 +248,7 @@ const cardObserver = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.3 }
+  { threshold: 0.3 },
 );
 
 cardObserver.observe(greetingCard);
@@ -329,22 +341,22 @@ const game = {
     w: 82,
     h: 72,
     vy: 0,
-    grounded: true
-  }
+    grounded: true,
+  },
 };
 
 const obstacleTypes = [
   { type: "stone", w: 48, h: 30 },
   { type: "fence", w: 64, h: 58 },
   { type: "hay", w: 58, h: 46 },
-  { type: "bucket", w: 42, h: 50 }
+  { type: "bucket", w: 42, h: 50 },
 ];
 
 const itemTypes = [
   { type: "ketupat", value: 10 },
   { type: "star", value: 10 },
   { type: "leaf", value: 8 },
-  { type: "heart", value: 12 }
+  { type: "heart", value: 12 },
 ];
 
 function resetGame(mode = "idle") {
@@ -366,7 +378,8 @@ function resetGame(mode = "idle") {
   game.player.vy = 0;
   game.player.grounded = true;
   scoreText.textContent = "Skor Berkah: 0";
-  gameMessage.textContent = "Bantu sapi kecil mengumpulkan berkah di kebun hijau.";
+  gameMessage.textContent =
+    "Bantu sapi kecil mengumpulkan berkah di kebun hijau.";
 }
 
 function startGame() {
@@ -402,7 +415,7 @@ function spawnObstacle() {
     ...data,
     x: game.width + 30,
     y: game.groundY - data.h,
-    passed: false
+    passed: false,
   });
 }
 
@@ -414,12 +427,14 @@ function spawnCollectible() {
     x: game.width + 40,
     y: game.groundY - lane,
     r: 18,
-    wobble: Math.random() * Math.PI * 2
+    wobble: Math.random() * Math.PI * 2,
   });
 }
 
 function rectsOverlap(a, b) {
-  return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
+  return (
+    a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y
+  );
 }
 
 function playerHitbox() {
@@ -427,7 +442,7 @@ function playerHitbox() {
     x: game.player.x + 10,
     y: game.player.y + 14,
     w: game.player.w - 22,
-    h: game.player.h - 16
+    h: game.player.h - 16,
   };
 }
 
@@ -436,7 +451,7 @@ function obstacleHitbox(obstacle) {
     x: obstacle.x + 8,
     y: obstacle.y + 8,
     w: obstacle.w - 16,
-    h: obstacle.h - 8
+    h: obstacle.h - 8,
   };
 }
 
@@ -445,7 +460,7 @@ function collectibleHitbox(item) {
     x: item.x - item.r + 4,
     y: item.y - item.r + 4,
     w: item.r * 2 - 8,
-    h: item.r * 2 - 8
+    h: item.r * 2 - 8,
   };
 }
 
@@ -457,7 +472,7 @@ function addCanvasParticles(x, y, color) {
       vx: Math.random() * 4 - 2,
       vy: -2 - Math.random() * 3,
       life: 34,
-      color
+      color,
     });
   }
 }
@@ -505,17 +520,26 @@ function updateGame() {
       game.score += item.value;
       scoreText.textContent = `Skor Berkah: ${game.score}`;
       playCollect();
-      addCanvasParticles(item.x, item.y, item.type === "heart" ? "#f19aa8" : "#f4b94f");
+      addCanvasParticles(
+        item.x,
+        item.y,
+        item.type === "heart" ? "#f19aa8" : "#f4b94f",
+      );
 
       if (game.score >= game.nextMessageScore) {
-        gameMessage.textContent = blessingMessages[Math.floor(Math.random() * blessingMessages.length)];
+        gameMessage.textContent =
+          blessingMessages[Math.floor(Math.random() * blessingMessages.length)];
         game.nextMessageScore += 40;
       }
     }
   });
 
-  game.obstacles = game.obstacles.filter((obstacle) => obstacle.x + obstacle.w > -20);
-  game.collectibles = game.collectibles.filter((item) => !item.collected && item.x + item.r > -20);
+  game.obstacles = game.obstacles.filter(
+    (obstacle) => obstacle.x + obstacle.w > -20,
+  );
+  game.collectibles = game.collectibles.filter(
+    (item) => !item.collected && item.x + item.r > -20,
+  );
 }
 
 function updateParticles() {
@@ -571,7 +595,8 @@ function drawBackground() {
   ctx.fill();
   ctx.globalAlpha = 1;
 
-  const cloudShift = game.state === "running" ? game.distance * 0.18 : game.frame * 0.18;
+  const cloudShift =
+    game.state === "running" ? game.distance * 0.18 : game.frame * 0.18;
   for (let i = 0; i < 5; i += 1) {
     const x = ((i * 260 - cloudShift) % 1240) - 130;
     drawCloud(x, 54 + (i % 2) * 62, i % 2 ? 0.74 : 1);
@@ -592,7 +617,8 @@ function drawBackground() {
     drawFence(x, 274);
   }
 
-  const grassShift = game.state === "running" ? game.distance : game.frame * 0.2;
+  const grassShift =
+    game.state === "running" ? game.distance : game.frame * 0.2;
   ctx.fillStyle = "#58b867";
   ctx.fillRect(0, game.groundY, game.width, game.height - game.groundY);
   ctx.strokeStyle = "rgba(255,255,255,0.32)";
@@ -687,7 +713,10 @@ function drawFence(x, y) {
 
 function drawCow() {
   const p = game.player;
-  const legWave = game.state === "running" && p.grounded ? Math.sin(game.frame * 0.32) * 8 : 0;
+  const legWave =
+    game.state === "running" && p.grounded
+      ? Math.sin(game.frame * 0.32) * 8
+      : 0;
   ctx.save();
   ctx.translate(p.x, p.y);
 
