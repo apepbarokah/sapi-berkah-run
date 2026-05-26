@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selamat Hari Raya Idul Adha</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='29' fill='%23fff7df'/%3E%3Ccircle cx='24' cy='26' r='4' fill='%232a4332'/%3E%3Ccircle cx='40' cy='26' r='4' fill='%232a4332'/%3E%3Cellipse cx='32' cy='40' rx='15' ry='10' fill='%23ffd9df'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="sky-decoration" aria-hidden="true">
+      <span class="cloud cloud-a"></span>
+      <span class="cloud cloud-b"></span>
+      <span class="cloud cloud-c"></span>
+      <span class="leaf leaf-a"></span>
+      <span class="leaf leaf-b"></span>
+      <span class="leaf leaf-c"></span>
+      <span class="leaf leaf-d"></span>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="Kembali ke Home">
+        <span class="brand-mark"></span>
+        <span>Idul Adha Manis</span>
+      </a>
+      <nav class="nav-links" aria-label="Menu utama">
+        <a href="#home">Home</a>
+        <a href="#ucapan">Ucapan</a>
+        <a href="#game">Game</a>
+      </nav>
+      <button
+        class="sound-toggle"
+        id="soundToggle"
+        type="button"
+        aria-pressed="true"
+      >
+        <span class="sound-icon" aria-hidden="true"></span>
+        <span id="soundText">Sound On</span>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero section-panel" id="home">
+        <div class="hero-copy">
+          <p class="soft-label">Untuk <span data-crush-name>Kamu</span></p>
+          <h1>Selamat Hari Raya Idul Adha</h1>
+          <p class="hero-subtitle">
+            Semoga hatimu secerah langit hari ini, dan senyummu tetap jadi
+            alasan aku ikut bahagia.
+          </p>
+          <button class="primary-btn" id="openGreeting" type="button">
+            <span>Buka Ucapan Spesial</span>
+            <span class="btn-shine" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <div
+          class="hero-scene"
+          aria-label="Pemandangan kebun Idul Adha dengan sapi lucu"
+        >
+          <div class="sun" aria-hidden="true"></div>
+          <div class="scene-cloud mini-cloud-one" aria-hidden="true"></div>
+          <div class="scene-cloud mini-cloud-two" aria-hidden="true"></div>
+          <div class="mosque" aria-hidden="true">
+            <span class="dome"></span>
+            <span class="tower tower-left"></span>
+            <span class="tower tower-right"></span>
+            <span class="mosque-body"></span>
+          </div>
+          <div class="tree tree-left" aria-hidden="true">
+            <span class="trunk"></span>
+            <span class="leaf-ball leaf-one"></span>
+            <span class="leaf-ball leaf-two"></span>
+            <span class="leaf-ball leaf-three"></span>
+          </div>
+          <div class="palm tree-right" aria-hidden="true">
+            <span class="palm-trunk"></span>
+            <span class="palm-leaf palm-one"></span>
+            <span class="palm-leaf palm-two"></span>
+            <span class="palm-leaf palm-three"></span>
+            <span class="palm-leaf palm-four"></span>
+          </div>
+          <div class="cow mascot" aria-hidden="true">
+            <span class="cow-tail"></span>
+            <span class="cow-body">
+              <span class="spot spot-one"></span>
+              <span class="spot spot-two"></span>
+            </span>
+            <span class="cow-head">
+              <span class="ear ear-left"></span>
+              <span class="ear ear-right"></span>
+              <span class="horn horn-left"></span>
+              <span class="horn horn-right"></span>
+              <span class="eye eye-left"></span>
+              <span class="eye eye-right"></span>
+              <span class="snout"></span>
+              <span class="smile"></span>
+            </span>
+            <span class="cow-arm"></span>
+            <span class="leg leg-one"></span>
+            <span class="leg leg-two"></span>
+            <span class="leg leg-three"></span>
+            <span class="leg leg-four"></span>
+          </div>
+          <div class="grass-line" aria-hidden="true"></div>
+          <div class="flower flower-a" aria-hidden="true"></div>
+          <div class="flower flower-b" aria-hidden="true"></div>
+          <div class="flower flower-c" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <section class="greeting section-panel" id="ucapan">
+        <div class="section-heading">
+          <p class="soft-label">Ucapan kecil</p>
+          <h2>Untuk yang diam-diam bikin hari terasa lebih cerah</h2>
+        </div>
+
+        <article class="greeting-card" id="greetingCard">
+          <div class="floating-decor heart-one" aria-hidden="true"></div>
+          <div class="floating-decor heart-two" aria-hidden="true"></div>
+          <div class="floating-decor star-one" aria-hidden="true"></div>
+          <div class="card-cow" aria-hidden="true">
+            <span class="card-cow-face">
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+          <p class="card-to">Hai, <span data-crush-name>Kamu</span>.</p>
+          <p class="typing-text" id="typedGreeting" aria-live="polite"></p>
+          <p class="tiny-note">
+            Dari sapi kecil yang diam-diam mendukungku buat berani bilang ini.
+          </p>
+          <div class="card-actions">
+            <button class="secondary-btn" id="smileButton" type="button">
+              Klik kalau kamu senyum
+            </button>
+            <button class="ghost-btn" id="secretButton" type="button">
+              Kirim Pesan Rahasia
+            </button>
+          </div>
+          <p class="secret-message" id="secretMessage" hidden>
+            Pesan rahasia: aku nggak cuma ngucapin Idul Adha, aku juga lagi
+            ngumpulin keberanian buat bisa lebih dekat hehehe.
+          </p>
+        </article>
+      </section>
+
+      <section class="game-section section-panel" id="game">
+        <div class="section-heading">
+          <p class="soft-label">Game Sapi Lucu</p>
+          <h2>Sapi Berkah Run</h2>
+        </div>
+
+        <div class="game-shell">
+          <div class="game-topbar">
+            <p class="score" id="scoreText">Skor Berkah: 0</p>
+            <p class="game-tip" id="gameTip">Press Space to Play</p>
+          </div>
+          <div class="canvas-wrap">
+            <canvas
+              id="gameCanvas"
+              width="960"
+              height="420"
+              aria-label="Game Sapi Berkah Run"
+            ></canvas>
+            <div class="game-overlay" id="gameOverlay">
+              <h3>Sapi Berkah Run</h3>
+              <p id="overlayText">Press Space to Play</p>
+              <button
+                class="primary-btn restart-btn"
+                id="restartButton"
+                type="button"
+                hidden
+              >
+                Main Lagi
+              </button>
+            </div>
+          </div>
+          <p class="game-message" id="gameMessage" aria-live="polite">
+            Bantu sapi kecil mengumpulkan berkah di kebun hijau.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+    <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+
+    <div class="modal" id="smileModal" aria-hidden="true">
+      <div
+        class="modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <button
+          class="modal-close"
+          id="modalClose"
+          type="button"
+          aria-label="Tutup pesan"
+        ></button>
+        <h2 id="modalTitle">Aduh, berarti misiku berhasil!</h2>
+        <p>
+          Sapinya senang, aku juga ikut senang. Terima kasih sudah senyum hari
+          ini.
+        </p>
+        <button class="secondary-btn" id="modalOk" type="button">
+          Iya, ketahuan
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
